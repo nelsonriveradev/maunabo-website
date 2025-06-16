@@ -10,8 +10,10 @@ interface RelatedAttractionsProps {
   currentSlug: string;
 }
 
-export function RelatedAttractions({ currentSlug }: RelatedAttractionsProps) {
-  const relatedAttractions = getRelatedAttractions(currentSlug);
+export async function RelatedAttractions({
+  currentSlug,
+}: RelatedAttractionsProps) {
+  const relatedAttractions = await getRelatedAttractions(currentSlug);
 
   if (relatedAttractions.length === 0) {
     return null;

@@ -6,46 +6,54 @@ import { notFound } from "next/navigation";
 import { getAttraction, getAllAttractionSlugs } from "@/lib/atractions";
 import type { Metadata } from "next";
 
+type Props = {
+  params: Promise<{ lugar: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+};
 // Generate static params for all attractions
 export async function generateStaticParams() {
   const slugs = getAllAttractionSlugs();
-  return slugs.map((slug) => ({ slug }));
+  return slugs.map((lugar: string) => ({ lugar }));
 }
 
 // Generate metadata for each attraction page
-export async function generateMetadata({
-  params,
-}: {
-  params: { lugar: string };
-}): Promise<Metadata> {
-  const { lugar } = await params;
-  const attraction = getAttraction(lugar);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  try {
+    const { lugar } = await params;
+    const attraction = getAttraction(lugar);
 
-  if (!attraction) {
+    if (!attraction) {
+      return {
+        title: "Atracción no encontrada | Turismo en Maunabo",
+        description:
+          "La atracción turística que busca no se encuentra disponible.",
+      };
+    }
+
     return {
-      title: "Atracción no encontrada | Turismo en Maunabo",
-      description:
-        "La atracción turística que busca no se encuentra disponible.",
+      title: `${attraction.name} | Turismo en Maunabo`,
+      description: attraction.shortDescription,
+      openGraph: {
+        title: `${attraction.name} | Turismo en Maunabo, Puerto Rico`,
+        description: attraction.shortDescription,
+        images: [attraction.images[0]],
+      },
+    };
+  } catch (error) {
+    console.log(`Error: ${error}`);
+    return {
+      title: "Error | Turismo en Maunabo",
+      description: "Ocurrió un error al cargar la información de la atracción.",
     };
   }
-
-  return {
-    title: `${attraction.name} | Turismo en Maunabo`,
-    description: attraction.shortDescription,
-    openGraph: {
-      title: `${attraction.name} | Turismo en Maunabo, Puerto Rico`,
-      description: attraction.shortDescription,
-      images: [attraction.images[0]],
-    },
-  };
 }
 
-export default function AttractionPage({
+export default async function AttractionPage({
   params,
 }: {
-  params: { lugar: string };
+  params: Promise<{ lugar: string }>;
 }) {
-  const { lugar } = params;
+  const { lugar } = await params;
   const attraction = getAttraction(lugar);
 
   if (!attraction) {
@@ -56,7 +64,7 @@ export default function AttractionPage({
     <main className="flex min-h-screen flex-col">
       <Navbar />
       <AttractionDetail attraction={attraction} />
-      <RelatedAttractions currentSlug={params.lugar} />
+      <RelatedAttractions currentSlug={lugar} />
       <Footer />
     </main>
   );

@@ -320,7 +320,7 @@ export function getAllAttractionSlugs() {
 }
 
 // Get related attractions (same category, excluding current)
-export function getRelatedAttractions(slug: string, limit = 3) {
+export async function getRelatedAttractions(slug: string, limit = 3) {
   const current = getAttraction(slug);
   if (!current) return [];
 
