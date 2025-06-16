@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -73,7 +74,7 @@ export function AttractionDetail({ attraction }: AttractionDetailProps) {
           <div className="grid gap-8 lg:grid-cols-2">
             {/* Image Gallery */}
             <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
-              <img
+              <Image
                 src={attraction.images[currentImageIndex] || "/placeholder.svg"}
                 alt={`${attraction.name} - Imagen ${currentImageIndex + 1}`}
                 className="h-full w-full object-cover"
@@ -206,7 +207,7 @@ export function AttractionDetail({ attraction }: AttractionDetailProps) {
                     : "opacity-70 hover:opacity-100"
                 )}
               >
-                <img
+                <Image
                   src={image || "/placeholder.svg"}
                   alt={`${attraction.name} - Miniatura ${index + 1}`}
                   className="h-16 w-24 object-cover"

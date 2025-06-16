@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { getRelatedAttractions } from "@/lib/atractions";
+import Image from "next/image";
 
 interface RelatedAttractionsProps {
   currentSlug: string;
@@ -40,7 +41,7 @@ export function RelatedAttractions({ currentSlug }: RelatedAttractionsProps) {
             <Link key={attraction.id} href={`/turismo/${attraction.slug}`}>
               <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg">
                 <div className="aspect-video w-full overflow-hidden">
-                  <img
+                  <Image
                     src={attraction.images[0] || "/placeholder.svg"}
                     alt={attraction.name}
                     className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"

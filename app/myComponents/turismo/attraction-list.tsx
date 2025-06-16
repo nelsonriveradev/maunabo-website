@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Star } from "lucide-react";
 import Link from "next/link";
 import { getAllAttractions, getAllCategories } from "@/lib/atractions";
+import Image from "next/image";
 
 export function AttractionsList() {
   const attractions = getAllAttractions();
@@ -63,8 +64,8 @@ export function AttractionsList() {
             <Link key={attraction.id} href={`/turismo/${attraction.slug}`}>
               <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg">
                 <div className="aspect-video w-full overflow-hidden">
-                  <img
-                    src={attraction.images[0] || "/placeholder.svg"}
+                  <Image
+                    src={`${attraction.images[0]}` || "/placeholder.svg"}
                     alt={attraction.name}
                     className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                   />

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -64,7 +65,7 @@ export function News() {
           {news.map((item) => (
             <Card key={item.title} className="overflow-hidden">
               <div className="aspect-video w-full overflow-hidden">
-                <img
+                <Image
                   src={item.image || "/placeholder.svg"}
                   alt={item.title}
                   className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"

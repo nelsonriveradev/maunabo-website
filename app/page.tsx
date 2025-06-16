@@ -2,8 +2,8 @@ import { CTA } from "@/app/myComponents/Cta";
 import { Footer } from "@/app/myComponents/Footer";
 import { Hero } from "@/app/myComponents/Hero";
 import { Navbar } from "@/app/myComponents/NavBar";
-import { News } from "@/app/myComponents/News";
-import { Services } from "@/app/myComponents/Services";
+// import { News } from "@/app/myComponents/News";
+// import { Services } from "@/app/myComponents/Services";
 import { Tourism } from "@/app/myComponents/tourism";
 
 export default function Home() {
