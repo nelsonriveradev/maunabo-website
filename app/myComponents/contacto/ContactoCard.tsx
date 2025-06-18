@@ -1,5 +1,4 @@
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Mail, Phone, MapPin, User, Clock } from "lucide-react";
+import { Mail, Phone, Clock } from "lucide-react";
 import Link from "next/link";
 
 export type DependencyInfo = {
@@ -40,21 +39,21 @@ export default function ContactoCard(dependency: DependencyInfo) {
             </div>
             <div className="flex items-center text-sm">
               <Phone className="h-4 w-4 text-green-600 mr-2" />
-              <a
+              <Link
                 href={`tel:${phoneNumber}`}
                 className="text-gray-700 hover:text-green-700"
               >
                 {dependency.phone[0]}
-              </a>
+              </Link>
             </div>
             <div className="flex items-center text-sm">
               <Mail className="h-4 w-4 text-green-600 mr-2" />
-              <a
+              <Link
                 href={`mailto:${dependency.email}`}
                 className="text-gray-700 hover:text-green-700 break-all"
               >
                 {dependency.email}
-              </a>
+              </Link>
             </div>
           </div>
           <button className="mt-4 w-full bg-yellow-400 hover:bg-yellow-500 text-green-900 font-medium py-2 rounded-md transition-colors text-sm">
