@@ -43,6 +43,8 @@ export function Tourism() {
               className="group relative overflow-hidden rounded-lg"
             >
               <Image
+              width={600}
+              height={600}
                 src={attraction.image || "/placeholder.svg"}
                 alt={attraction.title}
                 className="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-110"

@@ -1,5 +1,3 @@
-import { Navbar } from "@/app/myComponents/NavBar";
-import { Footer } from "@/app/myComponents/Footer";
 import { TourismHero } from "@/app/myComponents/turismo/hero-turismo";
 import { AttractionsList } from "@/app/myComponents/turismo/attraction-list";
 import { TourismCTA } from "@/app/myComponents/turismo/cta-turismo";
@@ -19,11 +17,9 @@ export const metadata: Metadata = {
 export default function TourismPage() {
   return (
     <main className="flex min-h-screen flex-col">
-      <Navbar />
       <TourismHero />
       <AttractionsList />
       <TourismCTA />
-      <Footer />
     </main>
   );
 }

@@ -75,6 +75,8 @@ export function AttractionDetail({ attraction }: AttractionDetailProps) {
             {/* Image Gallery */}
             <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
               <Image
+              width={800}
+              height={800}
                 src={attraction.images[currentImageIndex] || "/placeholder.svg"}
                 alt={`${attraction.name} - Imagen ${currentImageIndex + 1}`}
                 className="h-full w-full object-cover"
@@ -208,6 +210,8 @@ export function AttractionDetail({ attraction }: AttractionDetailProps) {
                 )}
               >
                 <Image
+                width={96}
+                height={96}
                   src={image || "/placeholder.svg"}
                   alt={`${attraction.name} - Miniatura ${index + 1}`}
                   className="h-16 w-24 object-cover"
@@ -221,8 +225,8 @@ export function AttractionDetail({ attraction }: AttractionDetailProps) {
       {/* Detailed Information Tabs */}
       <section className="bg-white py-12 mx-auto">
         <div className="container mx-auto">
-          <Tabs defaultValue="description" className="w-full">
-            <TabsList className="mb-8 grid w-full grid-cols-4 bg-maunabo-white">
+          <Tabs defaultValue="description" className="w-full ">
+            <TabsList className="mb-8 flex bg-maunabo-white overflow-x-scroll w-5/6 mx-auto">
               <TabsTrigger value="description">Descripción</TabsTrigger>
               <TabsTrigger value="visitor-info">
                 Información para Visitantes

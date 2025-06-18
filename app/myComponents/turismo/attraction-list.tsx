@@ -65,6 +65,8 @@ export function AttractionsList() {
               <Card className="h-full overflow-hidden transition-all duration-300 hover:shadow-lg">
                 <div className="aspect-video w-full overflow-hidden">
                   <Image
+                  width={500}
+                  height={500}
                     src={`${attraction.images[0]}` || "/placeholder.svg"}
                     alt={attraction.name}
                     className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
