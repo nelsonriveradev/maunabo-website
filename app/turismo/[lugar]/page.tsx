@@ -1,5 +1,3 @@
-import { Navbar } from "@/app/myComponents/NavBar";
-import { Footer } from "@/app/myComponents/Footer";
 import { AttractionDetail } from "@/app/myComponents/turismo/atraction-details";
 import { RelatedAttractions } from "@/app/myComponents/turismo/realted-attractions";
 import { notFound } from "next/navigation";
@@ -62,10 +60,8 @@ export default async function AttractionPage({
 
   return (
     <main className="flex min-h-screen flex-col">
-      <Navbar />
       <AttractionDetail attraction={attraction} />
       <RelatedAttractions currentSlug={lugar} />
-      <Footer />
     </main>
   );
 }
